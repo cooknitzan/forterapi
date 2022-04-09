@@ -1,9 +1,5 @@
-export abstract class CustomResponse {
-  abstract data: object;
+export interface CustomResponse {
+  data: object;
 
-  constructor(data: object) {
-    Object.setPrototypeOf(this, CustomResponse.prototype);
-  }
-
-  abstract serializeResponse(): {}[];
+  serializeResponse(): object;
 }

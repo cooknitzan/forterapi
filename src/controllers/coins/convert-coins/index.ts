@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from "express";
 import path from "path";
 import { COIN_URI, CONVERT_FROM, CONVERT_TO } from "../../../consts/consts";
 import { BadRequestError } from "../../../errors/error-types/bad-request-error";
-import { CoinsResponse } from "../../../response/response-types/coins-response";
+import { ConvertCoinsResponse } from "../../../response/response-types/convert-coins-response";
 
 const convertCoins = async (
   req: Request,
@@ -35,7 +35,7 @@ const convertCoins = async (
         throw new BadRequestError("please provide valid coins");
       }
 
-      const response: CoinsResponse = new CoinsResponse(data);
+      const response: ConvertCoinsResponse = new ConvertCoinsResponse(data);
       res.status(200).json(response.serializeResponse());
     }
   } catch (error) {

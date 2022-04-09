@@ -6,11 +6,11 @@ it("response wtih the coins after convert and status of 200 when given valid coi
     .get("/api/coins?convertTo=btc,Doge&convertFrom=eth,USd")
     .send()
     .expect(200);
-  const body = response.body;
+  const body = Object.keys(response.body);
   let bool = body.length == 2;
-  body.forEach((key: object) => {
-    const objKey = Object.entries(key);
-    if (Object.keys(objKey[0][1]).length != 2) {
+  body.forEach((key: string) => {
+    const objKey: string[] = Object.keys(response.body);
+    if (objKey.length != 2) {
       bool = false;
     }
   });
@@ -22,11 +22,11 @@ it("response with only valid coins after convert and status of 200 when given va
     .get("/api/coins?convertTo=btc,doge,Daer&convertFrom=eth,USd,aser")
     .send()
     .expect(200);
-  const body = response.body;
+  const body = Object.keys(response.body);
   let bool = body.length == 2;
-  body.forEach((key: object) => {
-    const objKey = Object.entries(key);
-    if (Object.keys(objKey[0][1]).length != 2) {
+  body.forEach((key: string) => {
+    const objKey: string[] = Object.keys(response.body);
+    if (objKey.length != 2) {
       bool = false;
     }
   });

@@ -3,7 +3,7 @@ import { NextFunction, Request, Response } from "express";
 import "dotenv/config";
 import { BadRequestError } from "../../../errors/error-types/bad-request-error";
 import { COIN_URI, CONVERT_FROM, CONVERT_TO } from "../../../consts/consts";
-import { CoinsResponse } from "../../../response/response-types/coins-response";
+import { GetCoinsResponse } from "../../../response/response-types/get-coins-response";
 
 const getCoins = async (req: Request, res: Response, next: NextFunction) => {
   const ids: string | undefined = req.params.ids;
@@ -15,7 +15,7 @@ const getCoins = async (req: Request, res: Response, next: NextFunction) => {
       throw new BadRequestError("please provide valid coins");
     }
 
-    const response: CoinsResponse = new CoinsResponse(data);
+    const response: GetCoinsResponse = new GetCoinsResponse(data);
     res.status(200).json(response.serializeResponse());
   } catch (error) {
     next(error);
