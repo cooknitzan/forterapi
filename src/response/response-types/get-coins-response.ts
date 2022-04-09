@@ -1,11 +1,7 @@
 import { CustomResponse } from "../custom-response";
 
-interface UsdValue {
-  USD: string;
-}
-
 interface Data {
-  [key: string]: UsdValue;
+  [key: string]: { USD: string };
 }
 
 export class GetCoinsResponse implements CustomResponse {
